@@ -5,9 +5,9 @@ import Footer from "./Footer";
 function HomePage() {
   return (
     <div>
-      <UserNav />
+      {/* <UserNav /> */}
       <div>תמונה ומלל על בית הספר</div>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

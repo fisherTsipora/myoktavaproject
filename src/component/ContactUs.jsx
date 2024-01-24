@@ -6,9 +6,9 @@ import Footer from "./Footer";
 function ContactUs() {
   return (
     <div>
-      <UserNav/>
+      {/* <UserNav/> */}
       <h1>ContactUs !!</h1>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, Outlet } from "react-router-dom";
 import { setLoggedUser } from "../features/userSlice";
+import Footer from "./Footer";
 
 function UserNav() {
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ function UserNav() {
     <div>
       <header>אוקטבה - בית הספר לנגינה ושירה</header>
       <nav>
-        <button onClick={handleClickLogOut}>התנתקות</button><br></br>
+        <button onClick={handleClickLogOut}>התנתקות</button>
+        <br></br>
         <Link to={"logInRegister"}>כניסת מנהל/מורה</Link>
         <Link to={"about"}>אודותינו</Link>
         <Link to={"contactUs"}>צור קשר</Link>
@@ -23,6 +25,7 @@ function UserNav() {
       </nav>
 
       <Outlet></Outlet>
+      <Footer />
     </div>
   );
 }

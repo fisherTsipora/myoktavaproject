@@ -8,19 +8,22 @@ import ContactUs from "./component/ContactUs";
 import LogInRegister from "./component/LogInRegister";
 import HomePageManager from "./component/HomePageManager";
 import AllTeachers from "./component/AllTeachers";
+import UserNav from "./component/UserNav";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage />}>
+        <Route path="/" element={<UserNav />}>
+          <Route path="" element={<HomePage />}></Route>
           <Route path="about" element={<About />}></Route>
           <Route path="contactUs" element={<ContactUs />}></Route>
-          <Route path="logInRegister" element={<LogInRegister />}></Route>
           <Route path="concerts" element={<Concerts />}></Route>
           <Route path="homePageManager" element={<HomePageManager />}></Route>
+          {/* <Route path="homePageTeacher" element={<HomePageTeacher />}></Route> */}
           <Route path="allTeachers" element={<AllTeachers />}></Route>
         </Route>
+        <Route path="/logInRegister" element={<LogInRegister />}></Route>
       </Routes>
     </div>
   );

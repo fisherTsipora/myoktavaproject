@@ -12,55 +12,57 @@ function LogInRegister() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //const loggedUser = useSelector(state=>state.user.setLoggedUser)
+  // const loggedUser = useSelector((state) => state.user.setLoggedUser);
 
   useEffect(() => {
     setPassword("");
     setId("");
   }, [error]);
 
-  const handleClickLoginManager = async () => {
+  const handleClickLoginManager = async (e) => {
+    e.preventDefault();
     if (id == "" || password == "") {
       setError("חובה למלא את השדות");
-      console.log("חובה למלא את השדות");
-      //dispatch(setLoggedUser(""));
     }
     try {
       const res = await login(id, password);
-      if (res) {
+      if (res.status === 200) {
         console.log(res);
-        // dispatch(setLoggedUser(res));
-        navigate("homePageManager");
+        dispatch(setLoggedUser(res.data));
+        if (res.data.level == 1) {
+          navigate("/homePageManager");
+        } else {
+          navigate("/homePageTeacher");
+        }
       } else {
         setError("אחד הפרטים שגויים");
-        // dispatch(setLoggedUser(""));
       }
     } catch (error) {
       setError(error.message);
-      // dispatch(setLoggedUser(""));
+      dispatch(setLoggedUser(null)); //Null שרוצים לרוקן את המשתמש המחובר - זה אובייקט לכן נשלח
       console.log(error.message);
     }
   };
 
-  const handleClickLoginTeacher = async () => {
-    if (id === "" || password === "") {
-      setError("חובה למלא את השדות");
-      // dispatch(setLoggedUser(""));
-    }
-    try {
-      const res = await login(id, password);
-      if (res) {
-        console.log(res);
-        // dispatch(setLoggedUser(res));
-        navigate("homePageManager");
-      } else {
-        setError("אחד הפרטים שגויים");
-      }
-    } catch (error) {
-      setError(error.message);
-      console.log(error.message);
-    }
-  };
+  // const handleClickLoginTeacher = async () => {
+  //   if (id === "" || password === "") {
+  //     setError("חובה למלא את השדות");
+  //     // dispatch(setLoggedUser(""));
+  //   }
+  //   try {
+  //     const res = await login(id, password);
+  //     if (res) {
+  //       console.log(res);
+  //       // dispatch(setLoggedUser(res));
+  //       navigate("homePageManager");
+  //     } else {
+  //       setError("אחד הפרטים שגויים");
+  //     }
+  //   } catch (error) {
+  //     setError(error.message);
+  //     console.log(error.message);
+  //   }
+  // };
 
   const handleChangeId = (event) => {
     setError("");
@@ -87,7 +89,7 @@ function LogInRegister() {
           name="id"
         />
         <br />
-    
+
         <label htmlFor="password">הכנס סיסמה</label>
         <input
           type="password"
@@ -97,7 +99,13 @@ function LogInRegister() {
           value={password}
         />
         <br />
-
+        {error != "" ? (
+          <>
+            <span>{error}</span>
+            <br />
+          </>
+        ) : null}
+        {/* {error != "" && <><span>{error}</span><br/></>} */}
         <button onClick={handleClickLoginManager}>התחבר</button>
 
         {/* <h3>כניסת מורה</h3>
