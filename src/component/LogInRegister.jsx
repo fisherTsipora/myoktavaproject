@@ -12,7 +12,7 @@ function LogInRegister() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const loggedUser = useSelector((state) => state.user.setLoggedUser);
+  // const logedUser = useSelector((state) => state.user.logedUser);
 
   useEffect(() => {
     setPassword("");
@@ -43,26 +43,6 @@ function LogInRegister() {
       console.log(error.message);
     }
   };
-
-  // const handleClickLoginTeacher = async () => {
-  //   if (id === "" || password === "") {
-  //     setError("חובה למלא את השדות");
-  //     // dispatch(setLoggedUser(""));
-  //   }
-  //   try {
-  //     const res = await login(id, password);
-  //     if (res) {
-  //       console.log(res);
-  //       // dispatch(setLoggedUser(res));
-  //       navigate("homePageManager");
-  //     } else {
-  //       setError("אחד הפרטים שגויים");
-  //     }
-  //   } catch (error) {
-  //     setError(error.message);
-  //     console.log(error.message);
-  //   }
-  // };
 
   const handleChangeId = (event) => {
     setError("");
@@ -107,27 +87,6 @@ function LogInRegister() {
         ) : null}
         {/* {error != "" && <><span>{error}</span><br/></>} */}
         <button onClick={handleClickLoginManager}>התחבר</button>
-
-        {/* <h3>כניסת מורה</h3>
-        <label htmlFor="teacherId">הכנס מספר ת"ז</label>
-        <input
-          type="text"
-          placeholder="תעודת זהות"
-          onChange={handleChangeId}
-          name="id"
-          //value={id}
-        />
-        <br />
-        <label htmlFor="password">הכנס סיסמה</label>
-        <input
-          type="password"
-          placeholder="סיסמה"
-          onChange={handleChangePassword}
-          name="password"
-          //value={password}
-        />
-        <br />
-        <button onClick={handleClickLoginTeacher}>התחבר</button> */}
       </form>
     </>
   );

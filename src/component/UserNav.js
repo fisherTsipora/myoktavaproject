@@ -8,7 +8,7 @@ function UserNav() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClickLogOut = () => {
-    navigate("/homePage");
+    navigate("/");
     dispatch(setLoggedUser(null));
   };
 

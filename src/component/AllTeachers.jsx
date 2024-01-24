@@ -2,7 +2,7 @@ import React from "react";
 
 function AllTeachers() {
   return (<>
-  <div>hhh</div>
+  <div>all AllTeachers</div>
   
   </>
   );

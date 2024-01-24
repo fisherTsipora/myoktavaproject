@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { getUsers } from "../utils/UserUtil";
 import { useState } from "react";
 
-function HomePageManager() {
+function HomePageTeacher() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const handleClickTeachers = async () => {
+  const handleClickTeacher = async () => {
     const res = await getUsers();
-    try {    
+    try {
       if (res) {
         console.log(res);
         navigate("allTeachers");
@@ -27,7 +27,7 @@ function HomePageManager() {
     <div>
       <span>שלום</span>
       <nav>
-        <button onClick={handleClickTeachers}>מורים</button>
+        <button onClick={handleClickTeacher}>מורים</button>
         <button>תלמידים</button>
         <button>אירעים</button>
         <button>תשלומים</button>
@@ -36,4 +36,4 @@ function HomePageManager() {
   );
 }
 
-export default HomePageManager;
+export default HomePageTeacher;
